@@ -23,6 +23,7 @@ const VARS = {
     PathGlob: "resources/scripts/**/*.ts",
   },
   templatesPathGlob: "resources/views/**/*.*",
+  serverPathGlob: "server/**/*.*",
   distPath: "public/dist",
 };
 
@@ -35,7 +36,10 @@ function serve() {
 
   watch(VARS.styles.PathGlob, styles);
 
-  watch(VARS.templatesPathGlob).on("change", browserSync.reload);
+  watch([VARS.templatesPathGlob, VARS.serverPathGlob]).on(
+    "change",
+    browserSync.reload
+  );
 
   watch(VARS.js.PathGlob).on("change", async () => {
     await js();

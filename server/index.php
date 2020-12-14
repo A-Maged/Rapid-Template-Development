@@ -1,7 +1,5 @@
 <?php
 
-// use Pug\Facade as PugFacade;
-
 include '../vendor/autoload.php';
 
 $templatesDir = realpath(__DIR__ . '/../resources/views/');
@@ -10,8 +8,12 @@ $pug = new \Pug([
     'basedir' => $templatesDir,
 ]);
 
-$html = $pug->renderFile('pages/home/home.pug',  [
-  'title' => 'Hello World',
+/* Change page */
+$pagePath = 'pages/home/home.pug';
+
+$html = $pug->renderFile($pagePath,  [
+  /* Pass data to page here */
+  'title' => 'Hello World from', 
 ]);
 
 print($html);
