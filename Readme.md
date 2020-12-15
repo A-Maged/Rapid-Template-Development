@@ -1,6 +1,6 @@
 ### Rapid Template Development
 
-- Pug templating engine
+- Twig templating engine
 - TailwindCss
 - PostCSS
 - Typescript
