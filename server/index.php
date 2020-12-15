@@ -3,19 +3,9 @@
 include '../vendor/autoload.php';
 
 $templatesDir = realpath(__DIR__ . '/../resources/views/');
+$pagePath = 'pages/home/home.twig';
 
-$pug = new \Pug([
-    'basedir' => $templatesDir,
-]);
+$loader = new \Twig\Loader\FilesystemLoader($templatesDir);
+$twig = new \Twig\Environment($loader);
 
-/* Change page */
-$pagePath = 'pages/home/home.pug';
-
-$html = $pug->renderFile($pagePath,  [
-  /* Pass data to page here */
-  'title' => 'Hello World from', 
-]);
-
-print($html);
-
-// php -S localhost:2020
+echo $twig->render($pagePath, ['title' => 'hello world']);
