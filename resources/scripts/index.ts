@@ -1,4 +1,3 @@
-import '../styles/style.css';
 import modal from './modules/modal';
 
 const registeredModules: any = { modal };
