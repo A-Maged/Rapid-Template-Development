@@ -9,9 +9,7 @@
     "watch": "gulp",
     "serve": "php -S localhost:2020 -t public/"
   },
-  "dependencies": {
-    "pug": "^3.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "autoprefixer": "^9.8.6",
     "browser-sync": "^2.26.13",

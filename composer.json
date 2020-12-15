@@ -1,6 +1,5 @@
 {
     "require": {
-        "pug-php/pug": "^3.4",
         "twig/twig": "^3.0"
     }
 }
