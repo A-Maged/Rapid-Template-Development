@@ -1,4 +1,6 @@
+const fs = require("fs");
 const { parallel, watch, src, dest, series } = require("gulp");
+const sourcemaps = require("gulp-sourcemaps");
 /* JS */
 const browserify = require("browserify");
 const source = require("vinyl-source-stream");
@@ -8,6 +10,8 @@ const postcss = require("gulp-postcss");
 const cleanCSS = require("gulp-clean-css");
 const rename = require("gulp-rename");
 const clean = require("gulp-clean");
+
+// const pkg = JSON.parse(fs.readFileSync("./package.json"));
 const browserSync = require("browser-sync").create();
 
 const VARS = {
@@ -53,11 +57,15 @@ function compile() {
 }
 
 function styles() {
-  return src(VARS.styles.Path, { allowEmpty: true })
-    .pipe(postcss())
-    .pipe(VARS.isProd ? cleanCSS() : browserSync.stream())
-    .pipe(rename(VARS.styles.OutputName))
-    .pipe(dest(VARS.distPath));
+  return (
+    src(VARS.styles.Path, { allowEmpty: true })
+      // .pipe(sourcemaps.init())
+      .pipe(postcss())
+      .pipe(VARS.isProd ? cleanCSS() : browserSync.stream())
+      // .pipe(sourcemaps.write("."))
+      .pipe(rename(VARS.styles.OutputName))
+      .pipe(dest(VARS.distPath))
+  );
 }
 
 function js() {
